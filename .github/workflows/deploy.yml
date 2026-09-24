@@ -28,10 +28,10 @@ jobs:
           NEXT_PUBLIC_THEME: next
         run: yarn build
 
-      - name: Deploy to EdgeOne Pages
-        uses: TencentEdgeOne/pages-action@v1
-        with:
-          secret-id: ${{ secrets.TENCENT_SECRET_ID }}
-          secret-key: ${{ secrets.TENCENT_SECRET_KEY }}
-          project-name: 'NotionNext'
-          dir: '.next'
+      - name: Install EdgeOne CLI and Deploy
+        env:
+          TENCENTCLOUD_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENTCLOUD_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+        run: |
+          npm install -g edgeone
+          edgeone pages deploy .next --project NotionNext
