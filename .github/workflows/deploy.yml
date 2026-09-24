@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: 'yarn'
 
       - name: Install dependencies
@@ -34,4 +34,4 @@ jobs:
           TENCENTCLOUD_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
         run: |
           npm install -g edgeone
-          edgeone pages deploy .next --project NotionNext
+          edgeone pages deploy .next --project qinio-blog
