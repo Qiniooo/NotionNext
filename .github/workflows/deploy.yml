@@ -28,10 +28,11 @@ jobs:
           NEXT_PUBLIC_THEME: next
         run: yarn build
 
+    
       - name: Install EdgeOne CLI and Deploy
         env:
           TENCENTCLOUD_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
           TENCENTCLOUD_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
         run: |
-          npm install -g edgeone
-          edgeone makers deploy .next -n pages
+          npm install -g edgeone@0.1.35
+          edgeone pages deploy .next --project-name pages
